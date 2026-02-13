@@ -20,8 +20,8 @@ jobs:
     # Step : 특정 작업을 수행하는 가장 작은 단위
     # Job은 여러 Step들로 구성되어 있다.
     steps:
-      - name: Hello World 찍기 # Step 이름
-        run : echo "Hello World" # Hello World 출력
+      - name: Hello World 찍기    # Step 이름
+        run : echo "Hello World"  # Hello World 출력
 
       - name: 여러 명령어 문장 작성하기
         run: | # | 를 입력하면 여러줄을 입력할 수 있다.
@@ -29,6 +29,11 @@ jobs:
           echo "Morning"
 
       - name: Github Actions 자체에 저장되어 있는 변수 사용해보기
-        run: |
+        run: | # GITHUB_SHA : commit id 값 , GITHUB_REPOSITORY : Repository 값
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
+    
+      - name: 아무한테 노출 되면 안되는 값 # Settings -> Secrets and variables -> Actions에서 MY_NAME, MY_HOBBY등 설정 가능
+        run: |
+          echo ${{ secrets.MY_NAME}}
+          echo ${{ secrets.MY_HOBBY}}
