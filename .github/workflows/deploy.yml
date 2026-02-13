@@ -1,3 +1,4 @@
+# yml 파일은 들여쓰기가 중요하다.
 # Workflow의 이름
 name: Github Actions 실행시켜보기 
 
@@ -26,3 +27,8 @@ jobs:
         run: | # | 를 입력하면 여러줄을 입력할 수 있다.
           echo "Good"
           echo "Morning"
+
+      - name: Github Actions 자체에 저장되어 있는 변수 사용해보기
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
